@@ -1,0 +1,14 @@
+{
+  "name": "telegram-doorkeeper",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:nextlevelshit/telegram-doorkeeper.git",
+  "author": "Michael Czechowski <mail@dailysh.it>",
+  "license": "GPL-2.0",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.27.1"
+  },
+  "scripts": {
+    "revive": "node index.js"
+  }
+}
