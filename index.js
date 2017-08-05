@@ -52,7 +52,7 @@ bot.onText(/\/doors/, (msg) => {
   bot.sendMessage(msg.chat.id, (doors) ? 'Hereinspaziert! Das Faust ist offen!' : 'Sorry Bro, leider geschlossen :(');
 });
 
-bot.onText(/(?:(?:jemand|(?:da|unten|im|in))|(?:(?:unten|im|in)|faust))|(?:ist|(?:offen|geöffnet)).*?\?$/, (msg) => {
+bot.onText(/(((jemand).*?(da|unten|im|in))|((unten|im|in).*?faust)|(ist.*?(offen|geöffnet))).*?\?$/, (msg) => {
   console.log(msg);
   bot.sendMessage(msg.chat.id, (doors) ? `Klar ${msg.from.first_name}, es ist offen! Komm vorbei :)` : `Sorry ${msg.from.first_name}, gerade ist niemand da :/`);
 });
