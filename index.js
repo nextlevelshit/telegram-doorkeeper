@@ -53,21 +53,22 @@ bot.onText(/\/doors/, (msg) => {
 });
 
 bot.onText(/(?:(?:jemand|(?:da|unten|im|in))|(?:(?:unten|im|in)|faust))|(?:ist|(?:offen|geöffnet)).*?\?$/, (msg) => {
+  console.log(msg);
   bot.sendMessage(msg.chat.id, (doors) ? `Klar ${msg.from.first_name}, es ist offen! Komm vorbei :)` : `Sorry ${msg.from.first_name}, gerade ist niemand da :/`);
-});
-
-bot.on('message', (msg) => {
-  console.log(msg.chat.id, msg.text);
 });
 
 function open() {
   doors = true;
-  console.log('Doors opened at Café Faust');
+  if(msg.from.first_name) {
+    bot.sendMessage(config.telegram.channel, `${msg.from.first_name} hat soeben das Faust aufgeschlossen. Kommt vorbei, wenn ihr Bock habt!`);
+  }
   return;
 }
 
 function close() {
   doors = false;
-  console.log('Doors closed at Café Faust');
+  if(msg.from.first_name) {
+    bot.sendMessage(config.telegram.channel, `Das Faust wurde soeben abgeschlossen. Tschüss ${msg.from.first_name}!`);
+  }
   return;
 }
