@@ -8,13 +8,6 @@ const bot = new TelegramBot(config.telegram.token, {polling: true});
 
 let doors = false;
 
-// bot.on('text', (msg) => {
-//   if (msg.chat.id === -180708744) {
-//     console.log('Messages tracked on Cafe Faust Offtopic');
-//   }
-
-// });
-
 bot.onText(/\/start/, (msg) => {
   bot.sendMessage(msg.chat.id, `Hi ${msg.from.first_name}, wie kann ich dir helfen?`, {
     'reply_markup': {
@@ -61,7 +54,7 @@ bot.onText(/\/doors/, (msg) => {
 
 bot.onText(/(?:(?:jemand|(?:da|unten|im|in))|(?:(?:unten|im|in)|faust))|(?:ist|(?:offen|geöffnet)).*?\?$/, (msg) => {
   bot.sendMessage(msg.chat.id, (doors) ? `Klar ${msg.from.first_name}, es ist offen! Komm vorbei :)` : `Sorry ${msg.from.first_name}, gerade ist niemand da :/`);
-}); 
+});
 
 bot.on('message', (msg) => {
   console.log(msg.chat.id, msg.text);
@@ -78,5 +71,3 @@ function close() {
   console.log('Doors closed at Café Faust');
   return;
 }
-
-// bot.onText(/\/geöffnet/)
